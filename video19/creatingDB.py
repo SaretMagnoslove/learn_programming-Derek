@@ -1,5 +1,32 @@
 import sqlite3
-from printDB import printDB
+import sys
+import csv
+
+# ---------- FUNCTIONS ----------
+
+def printDB():
+    # To retrieve data from a table use SELECT followed
+    # by the items to retrieve and the table to
+    # retrieve from
+
+    try:
+        result = theCurser.execute("SELECT id, FName, LName, Age, Address, Salary, HireDate FROM Employees")
+
+        # You receive a list of lists that hold the result
+        for row in result:
+            print("ID :", row[0])
+            print("FName :", row[1])
+            print("LName :", row[2])
+            print("Age :", row[3])
+            print("Address :", row[4])
+            print("Salary :", row[5])
+            print("HireDate :", row[6])
+
+    except sqlite3.OperationalError:
+        print("The Table Doesn't Exist")
+
+    except:
+        print("Couldn't Retrieve Data From Database")
 
 db_conn = sqlite3.connect('test.db')
 
