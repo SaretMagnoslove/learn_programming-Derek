@@ -1,4 +1,5 @@
 import sqlite3
+from printDB import printDB
 
 db_conn = sqlite3.connect('test.db')
 
@@ -21,7 +22,9 @@ db_conn.execute('INSERT INTO Employees (Fname, LName, Age, Address, Salary, Hire
                 'VALUES ("Rene","Matista",34,"Ral St.", 5000, date("now"))')
 db_conn.execute("INSERT INTO Employees (FName, LName, Age, Address, Salary, HireDate)"
                 "VALUES ('Derek', 'Banas', 41, '123 Main St', '500,000', date('now'))")
-db_conn.commit()  
+db_conn.commit() 
+
+printDB() 
 
 db_conn.close()
 print('Database closed')
