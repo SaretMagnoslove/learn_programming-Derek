@@ -16,6 +16,12 @@ try:
                      NOT NULL, Address TEXT, Salary REAL, HireDate TEXT);")
 except sqlite3.OperationalError:
     print('Ooops, An Operational Error Occured')
-    
+
+db_conn.execute('INSERT INTO Employees (Fname, LName, Age, Address, Salary, HireDate)'
+                'VALUES ("Rene","Matista",34,"Ral St.", 5000, date("now"))')
+db_conn.execute("INSERT INTO Employees (FName, LName, Age, Address, Salary, HireDate)"
+                "VALUES ('Derek', 'Banas', 41, '123 Main St', '500,000', date('now'))")
+db_conn.commit()  
+
 db_conn.close()
 print('Database closed')
