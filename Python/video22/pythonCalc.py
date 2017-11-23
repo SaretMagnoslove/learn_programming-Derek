@@ -49,6 +49,11 @@ class Calculator:
                 self.sub_trigger = True
 
             self.number_entry.delete(0, "end")
+
+    def all_clear(self, value):
+        
+        self.number_entry.delete(0, "end")
+        self.number_entry.insert(0, "0")
                 
     def equal_button_press(self):
 
@@ -131,7 +136,7 @@ class Calculator:
 #----4th Column----
 
         self.button_clear = ttk.Button(root, 
-        text="AC", command=lambda: self.button_press('AC')).grid(row=4, column=0)
+        text="AC", command=lambda: self.all_clear('AC')).grid(row=4, column=0)
 
         self.button0 = ttk.Button(root, 
         text="0", command=lambda: self.button_press('0')).grid(row=4, column=1)
