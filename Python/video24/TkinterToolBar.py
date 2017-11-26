@@ -76,6 +76,32 @@ class TkInterEx:
 
         lb_frame.pack()
 
+        sb_frame = Frame(root)
+
+        quantity_label = Label(sb_frame,
+                                text='How many shall I replicate')
+        
+        quantity_label.pack()
+
+        spin_box = Spinbox(sb_frame,
+                            from_=1, to=5)
+        
+        spin_box.pack()
+
+        extra_label = Label(sb_frame,
+                            text='Select style')
+        
+        extra_label.pack()
+
+        extras_spin_box = Spinbox(sb_frame,
+                            values=('Vulcan',
+                                    'Romulan',
+                                    'Klingon'))
+        
+        extras_spin_box.pack()
+
+        sb_frame.pack()
+
 root = Tk()
 root.geometry('600x550')
 app = TkInterEx(root)
