@@ -2,9 +2,20 @@ from tkinter import *
 from PIL import Image, ImageTk
 
 class TkInterEx:
+    
     @staticmethod
     def quit_app(event=None):
         root.quit()
+
+    def on_fav_food_select(self, event=None):
+
+        lb_widget = event.widget
+
+        index = int(lb_widget.curselection()[0])
+
+        lb_value = lb_widget.get(index)
+
+        self.fav_food_label['text'] = "I'll get you " + lb_value
 
     def __init__(self, root):
 
@@ -44,6 +55,26 @@ class TkInterEx:
 
         toolbar.pack(side=TOP, fill=X)
         root.config(menu=menubar)
+
+        lb_frame = LabelFrame(root, text="Food Options", padx=5, pady=5)
+
+        self.fav_food_label = Label(lb_frame,
+                                    text="What is your favorite food")
+
+        self.fav_food_label.pack()
+
+        list_box = Listbox(lb_frame)
+
+        list_box.insert(1, "Bahgol")
+        list_box.insert(2, "Jumbo mollusk")
+        list_box.insert(3, "Osol twist")
+        list_box.insert(4, "Eelwasser")
+        list_box.insert(5, "Regova egg")
+
+        list_box.bind('<<ListboxSelect>>', self.on_fav_food_select)
+        list_box.pack()
+
+        lb_frame.pack()
 
 root = Tk()
 root.geometry('600x550')
